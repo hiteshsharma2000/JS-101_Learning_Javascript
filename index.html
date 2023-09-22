@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch</title>
+    <style>
+        .container {
+            text-align: center;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="stopwatch">00:00:00</div>
+        <button id="startButton">Start</button>
+        <button id="pauseButton">Pause</button>
+        <button id="resetButton">Reset</button>
+    </div>
+
+    <script>
+        let startTime = 0;
+        let intervalId;
+        let isRunning = false;
+
+        const stopwatchDisplay = document.getElementById("stopwatch");
+        const startButton = document.getElementById("startButton");
+        const pauseButton = document.getElementById("pauseButton");
+        const resetButton = document.getElementById("resetButton");
+
+        function updateStopwatch() {
+            const currentTime = Date.now() - startTime;
+            const seconds = Math.floor((currentTime / 1000) % 60);
+            const minutes = Math.floor((currentTime / (1000 * 60)) % 60);
+            const hours = Math.floor(currentTime / (1000 * 60 * 60));
+
+            const formattedTime = `${hours > 0 ? hours.toString().padStart(2, '0') + ':' : ''}${minutes > 0 || hours > 0 ? minutes.toString().padStart(2, '0') + ':' : ''}${seconds.toString().padStart(2, '0')}`;
+            stopwatchDisplay.textContent = formattedTime;
+        }
+
+        function startTimer() {
+            if (!isRunning) {
+                startTime = Date.now() - (startTime || 0);
+                intervalId = setInterval(updateStopwatch, 1000);
+                isRunning = true;
+                startButton.textContent = "Pause";
+            }
+        }
+
+        function pauseTimer() {
+            if (isRunning) {
+                clearInterval(intervalId);
+                isRunning = false;
+                startButton.textContent = "Resume";
+            }
+        }
+
+        function resetTimer() {
+            clearInterval(intervalId);
+            isRunning = false;
+            startTime = 0;
+            stopwatchDisplay.textContent = "00:00:00";
+            startButton.textContent = "Start";
+        }
+
+        startButton.addEventListener("click", function () {
+            if (isRunning) {
+                pauseTimer();
+            } else {
+                startTimer();
+            }
+        });
+
+        pauseButton.addEventListener("click", pauseTimer);
+        resetButton.addEventListener("click", resetTimer);
+    </script>
+</body>
+</html>

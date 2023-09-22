@@ -1,0 +1,76 @@
+
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ </head>
+ <body>
+    
+ </body><script>
+ let isSuccessful = true;
+ function fetchData() {
+   return new Promise(function (resolve, reject) {
+     setTimeout(function () {
+       if (isSuccessful) {
+         resolve({ mesg: "resolved" });
+       } else {
+         reject({ mesg: "rejected" });
+       }
+     }, 1000);
+   });
+ }
+ 
+ fetchData()
+   .then(function (info) {
+     console.log(info);
+   })
+   .catch(function (rejectMessage) {
+     console.log(rejectMessage);
+   });
+   </script>
+ </html>
+
+ <!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>promises</h1>
+</body>
+<script>
+let v=false;
+
+    let myp= new Promise(function(resolve,reject){
+        setTimeout(function(){
+            if(v){
+          const data=  [
+                    {id:1,POSITION:"hr"},
+                    {id:2,PODITION:"developer"}
+            ]
+            resolve(data)
+            }else{
+            reject({name:"no"})
+            }
+        },2000)
+
+    })
+    console.log(myp)
+
+ myp
+ .then(function(ele){
+    console.log(ele)
+ })
+ .catch(function(ele){
+console.log(ele)
+ })
+
+</script>
+</html>
