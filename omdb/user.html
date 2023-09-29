@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head><style>
+    body{
+        margin: 0;padding: 0;
+        background-color:black
+    }
+    #nav{
+        
+        display: flex;
+        justify-content: space-around;
+        background-color: rgb(24, 10, 10);
+      background-color:  rgba(10, 214, 241, 0.834);
+      border: 9px solid rgb(241, 230, 17);
+      border-radius: 10px;
+        
+    }input{
+        height: 30px;
+        width: 20%;
+        border-radius: 7px;
+        
+    }
+    #nav h2,input,button{
+        margin-top: 20px;padding: 10px;
+        border: 3px solid black;
+        background-color: yellow;
+        border-radius: 7px;
+        
+    }
+    button{
+        height: 50px;
+        
+        border-radius: 7px;
+        width: 10%;
+        background-color: yellow;
+        color: black;
+        font-weight: bolder;
+        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+    }img{
+        height: 250px;
+        width: 100%;
+        margin-bottom: px;
+    }
+    button:hover{
+        background-color: orange;
+        color: black;
+        font-weight: bolder;
+        cursor: pointer;
+        height: 53px;
+        width: 10%;
+        transition: 0.15s;
+    }
+    #main{
+border-top:5px solid yellow;
+    }
+    #display{
+        display: grid;
+        grid-template-columns: repeat(5,1fr);
+        gap: 30px;
+       background: none;
+        margin-left: 50px;
+        margin-right: 50px;
+        margin-top: 50px;
+        color: yellow;
+        
+    }
+    #display:hover .user-card{
+filter: blur(5px);
+
+    }
+    #display:hover .user-card:hover{
+filter: blur(0px);
+
+    }
+    .user-card{
+        border: 2px solid black;
+        border-radius: 7px;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    }.user-card:hover{
+        opacity: 80%;
+        transform: scale(.90);
+       
+    }
+
+</style>
+<body>
+    <div id="main"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjM957eehw73Jx8Z9RJimdE-UwSWTALMfboQ&usqp=CAU" alt="">
+        <div id="nav">
+            <h2>HOME</h2>
+            <input type="text" id="input" placeholder="search movie name">
+            <button onclick="show()">Search
+                </button>
+            <button id="user"></button>
+            <button onclick="logout()">Logout</button>
+        </div>
+        <div id="display"></div>
+       
+    </div>
+    
+</body><script src="./index.js">
+
+
+
+</script>
+</html>

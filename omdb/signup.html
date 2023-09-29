@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>body{
+    margin: 0;padding: 0;display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: black;
+        font-family:Verdana, Geneva, Tahoma, sans-serif
+    }
+   #form-sign{
+    background-color: rgb(0, 0, 0);
+    border-radius: 7px;
+    color: yellow;
+    
+
+   }#form-sign > input{
+    margin: 25px;
+    height: 25px;
+   
+   }#form-sign > img{
+    margin-left: 36%;
+    
+   
+   }#btn{
+    color: black;
+  
+    font-weight: bold;
+   }#btn:hover{
+    
+    color: rgb(0, 165, 102);
+   }
+  
+    </style>
+</head>
+<body> 
+    <form id="form-sign">
+        <div style="display: flex;justify-content: center;align-items: center;">
+            <h1>SIGN IN </h1></div><br><br>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjM957eehw73Jx8Z9RJimdE-UwSWTALMfboQ&usqp=CAU" alt="">
+           <br><br> <label for="">Enter name :</label>
+        <input type="text" name="name">
+        <label for="">Enter email :</label><input type="text" name="email">
+        
+        <label for="password" >Enter password :</label>
+        <input type="text" name="password"><br><br>
+        <input type="submit" id="btn" style="margin-left: 40%;width:20%;height: 50px;background-color: yellow;border-radius: 7px;">
+    </form>
+</body>
+<script>
+const submit=document.getElementById("form-sign");
+submit.addEventListener("submit",function(e){
+    e.preventDefault();
+     const name=document.querySelector(`[name="name"]`).value;
+     const email=document.querySelector(`[name="email"]`).value;
+     const password=document.querySelector(`[name="password"]`).value;
+     
+localStorage.setItem("name",name);
+localStorage.setItem("email",email);
+localStorage.setItem("password",password);
+window.location.href=`/home.html`
+})
+</script>
+</html>
