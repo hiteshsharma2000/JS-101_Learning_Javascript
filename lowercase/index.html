@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #main{
+        
+font-weight: bold;
+    }
+    body{
+        display: flex;
+        justify-content: center;
+        
+    }
+    
+</style>
+<body>
+    <div id="parent">
+
+    <br>
+    <h2>Sample Array</h2>
+    <div id="main">["MA", "SA", "I", "SCH", "OOL"]</div>
+    <br>
+    <button id="convert" >convert</button>
+    
+</div>    
+</body><script>
+    let convert=true;
+    document.querySelector("#convert").addEventListener("click",()=>{
+        
+    if (convert) {
+        let arr2=["MA", "SA", "I", "SCH", "OOL"]
+  let arr=  arr2.map(ele=>`"${ele.toLowerCase()}"`)
+let display=document.getElementById("main");
+
+display.innerHTML=`<h3>[${arr}]</h3>`
+
+console.log(arr)
+       
+    } else {
+        let arr2=["ma", "sa", "i", "sch", "ool"]
+  let arr=  arr2.map(ele=>`"${ele.toUpperCase()}"`)
+let display=document.getElementById("main");
+
+display.innerHTML=`<h3>[${arr}]</h3>`
+    }
+   return convert = !convert;
+
+
+})
+//     let arr=["MA", "SA", "I", "SCH", "OOL"]
+//    arr.map(ele=>{
+//     let  v=ele.toLowerCase()
+//      arr2.push(`"${v}"`)
+// let display=document.getElementById("main");
+    // display.textContent=arr2
+    // display.innerHTML=`<h3>[${arr2}]</h3>`
+//     document.getElementById("convert").disable=true;
+
+    
+ 
+//    });
+   
+   
+</script>
+</html>
