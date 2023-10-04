@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODOLIST</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            /* background-color: rgb(107, 52, 194); */
+            background-image: url("https://tse2.mm.bing.net/th?id=OIP.YhLeDt_PoZ3J0KscK3zP7gHaEK&pid=Api&P=0&h=220");
+            background-repeat: no-repeat;
+            background-size:cover;
+        }
+        table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 60%;
+  margin: auto;
+  margin-top: 50px;
+  text-align: center;
+  border:  5px solid black;
+}
+.btn{
+    margin:10px;
+    border-radius: 5px;
+    color: rgb(235, 116, 5);
+    background-color: black;
+  /* text-align: center; */
+
+}
+
+table td,
+table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+
+table tr:nth-child(even) {
+  background-color: #c07628;
+}
+table tr:nth-child(odd) {
+  background-color: #229ecf;
+}
+
+table tr:hover {
+  background-color: #ddd;
+}
+
+table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #d77506;
+  color: white;
+  text-align: center;
+}
+    </style>
+</head>
+<body>
+    <div id="table"> 
+
+   
+    <table>
+        <thead>
+            <tr>
+                <th>USER ID &nbsp;</th>
+            <th> TITLE &nbsp;</th>
+            <th>COMPLETED &nbsp;</th>
+            <th>FAV section &nbsp;</th>
+            </tr>
+           
+            
+        </thead>
+        <tbody id="added">
+        
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
+<script>
+
+    async function getdata(){
+        let res = await fetch(`https://jsonplaceholder.typicode.com/todos/`);
+       let data = await res.json();
+        console.log(data);
+
+        data.forEach((ele)=>{
+let trow=document.createElement("tr");
+          let td1 = document.createElement("td");
+          td1.innerText=ele.userId;
+
+           let td2=  document.createElement("td");
+            td2.innerText=ele.title;
+
+             let td3 =document.createElement("td");
+             td3.innerText=ele.completed;
+             let button=document.createElement("input");
+             button.type="radio"
+             button.className="btn";
+             
+            let main=document.getElementById("added");
+            trow.append(td1,td2,td3,button);
+            main.append(trow);
+
+         
+
+        });
+    }
+    getdata();
+</script>

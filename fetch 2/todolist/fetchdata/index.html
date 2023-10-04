@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>products</title>
+</head>
+<style>
+    #main{
+        margin-left: 100;
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        gap: 50px;
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+    body{
+        background-color: blueviolet;
+    }
+    .size{
+        width: 60%;
+        height: 200px;
+    } 
+    .card{
+        padding-top: 15px;
+        border-radius: 5px;
+        /* border: 3px solid black; */
+        padding-left: 25px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        background-color: aqua;
+
+    }
+</style>
+<body>
+    
+    <div id="main">
+
+    </div>
+</body>
+</html>
+<script >
+    async function displaydat(){
+        let res = await fetch("https://fakestoreapi.com/products");
+        let data= await res.json();
+        console.log(data)
+        data.forEach(({title,price,description,category,image,rating}) => {
+let card=document.createElement("div");
+card.className="card"
+            let dis =document.createElement("img");
+            dis.className="size"
+            dis.src=image;
+
+            let des=document.createElement("h3");
+            des.innerText=description
+            
+            let mrp=document.createElement("h2");
+            mrp.textContent=`MRP - ${price}`;
+            mrp.style.color="red"
+
+            let cat=document.createElement("p");
+            cat.textContent=`Category - ${category}`;
+
+            let rate=document.createElement("p");
+            rate.textContent = `Rating - ${rating.rate}`;
+            let main=document.getElementById("main");
+card.append(dis,des,mrp,cat,rate)
+            main.append(card)
+            console.log(rating)
+        });
+    }
+displaydat()
+</script>

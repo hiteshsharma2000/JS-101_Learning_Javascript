@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Weather App</h1>
+        <input type="text" id="cityInput" placeholder="Enter city name">
+        <button id="searchButton">Search</button>
+    </header>
+    <main>
+        <div class="map-container" id="map"></div>
+        <div class="weather-details">
+            <h2>Weather Details</h2>
+            <!-- Weather details will be displayed here -->
+        </div>
+    </main>
+    <script >// script.js
+
+        const apiKey = 'YOUR_OPENWEATHERMAP_API_KEY';
+        const googleMapsApiKey = 'YOUR_GOOGLE_MAPS_API_KEY';
+        
+        const cityInput = document.getElementById('cityInput');
+        const searchButton = document.getElementById('searchButton');
+        const mapContainer = document.getElementById('map');
+        const weatherDetails = document.querySelector('.weather-details');
+        
+        searchButton.addEventListener('click', () => {
+            const city = cityInput.value;
+            
+            // Fetch weather data from OpenWeatherMap API
+            fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Display weather details using icons
+                    weatherDetails.innerHTML = `
+                        <p>Min Temp: ${data.main.temp_min}°C <img src="min_temp_icon.png" alt="Min Temp Icon"></p>
+                        <p>Max Temp: ${data.main.temp_max}°C <img src="max_temp_icon.png" alt="Max Temp Icon"></p>
+                        <p>Wind: ${data.wind.speed} m/s <img src="wind_icon.png" alt="Wind Icon"></p>
+                        <p>Clouds: ${data.clouds.all}% <img src="cloud_icon.png" alt="Cloud Icon"></p>
+                        <p>Sunrise: ${new Date(data.sys.sunrise * 1000).toLocaleTimeString()} <img src="sunrise_icon.png" alt="Sunrise Icon"></p>
+                        <p>Sunset: ${new Date(data.sys.sunset * 1000).toLocaleTimeString()} <img src="sunset_icon.png" alt="Sunset Icon"></p>
+                    `;
+                    
+                    // Display Google Map of the city
+                    mapContainer.innerHTML = `<iframe
+                        width="400"
+                        height="300"
+                        frameborder="0"
+                        style="border:0"
+                        src="https://www.google.com/maps/embed/v1/place?key=${googleMapsApiKey}&q=${city}"
+                        allowfullscreen
+                    ></iframe>`;
+                })
+                .catch(error => {
+                    console.error(error);
+                    weatherDetails.innerHTML = 'City not found. Please try again.';
+                    mapContainer.innerHTML = '';
+                });
+        });
+        </script>
+</body>
+</html>
