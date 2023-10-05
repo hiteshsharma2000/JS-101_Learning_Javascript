@@ -1,7 +1,7 @@
  const show= async () =>{
 try {
     let query=document.querySelector("#input").value;
-    let url=`http://www.omdbapi.com/?i=tt3896198&apikey=ef86af6&s=${query}`;
+    let url=`https://www.omdbapi.com/?i=tt3896198&apikey=ef86af6&s=${query}`;
 
     let responce= await fetch(url)
 

@@ -42,39 +42,39 @@ async function fetchWeather() {
   }
 }
 
-// async function getForecastData(city) {
-//   try {
-//     let APIkey = "aa2338a405271c2dbb7943eb7c748def";
-//     let res = await fetch(
-//       `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${APIkey}&units=metric`
-//     );
-//     let data = await res.json();
-//     console.log(data);
-//     const forecastEls = document.getElementById("forecastDays");
-//     forecastEls.innerHTML = ""; // Clear existing forecasts
+async function getForecastData(city) {
+  try {
+    let APIkey = "aa2338a405271c2dbb7943eb7c748def";
+    let res = await fetch(
+      `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${APIkey}&units=metric`
+    );
+    let data = await res.json();
+    console.log(data);
+    const forecastEls = document.getElementById("forecastDays");
+    forecastEls.innerHTML = ""; // Clear existing forecasts
 
-//     // Filter the data to get one forecast per day
-//     const dailyData = data.list.filter((item, index) => index % 8 === 0);
+    // Filter the data to get one forecast per day
+    const dailyData = data.list.filter((item, index) => index % 8 === 0);
 
-//     dailyData.forEach((day, idx) => {
-//       if (idx < 5) {
-//         // Only take 5 days
-//         const temp = day.main.temp;
-//         const icon = day.weather[0].icon;
-//         const date = new Date(day.dt_txt).toLocaleDateString();
+    dailyData.forEach((day, idx) => {
+      if (idx < 5) {
+        // Only take 5 days
+        const temp = day.main.temp;
+        const icon = day.weather[0].icon;
+        const date = new Date(day.dt_txt).toLocaleDateString();
 
-//         forecastEls.innerHTML += `
-//                     <div class="forecast-day">
-//                         <div class="forecast-date">${date}</div>
-//                         <div class="forecast-icon">
-//                             <img src="http://openweathermap.org/img/w/${icon}.png" alt="Weather Icon">
-//                         </div>
-//                         <div class="forecast-temp">${temp}°C</div>
-//                     </div>
-//                 `;
-//       }
-//     });
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
+        forecastEls.innerHTML += `
+                    <div class="forecast-day">
+                        <div class="forecast-date">${date}</div>
+                        <div class="forecast-icon">
+                            <img src="http://openweathermap.org/img/w/${icon}.png" alt="Weather Icon">
+                        </div>
+                        <div class="forecast-temp">${temp}°C</div>
+                    </div>
+                `;
+      }
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}

@@ -8,6 +8,7 @@
 </head>
 <style>
     #main{
+        margin-top: 100px;
         margin-left: 100;
         display: grid;
         grid-template-columns: repeat(4,1fr);
@@ -31,19 +32,113 @@
         background-color: aqua;
 
     }
+    #nav{
+        
+        display: flex;
+        justify-content: space-around;
+        background-color: rgb(24, 10, 10);
+      background-color:  rgba(10, 214, 241, 0.834);
+    
+      border-radius: 10px;
+        
+    } input[type="text"] {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+} 
+
+input[type="text"]:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 20px 0;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
 </style>
 <body>
+    <div id="nav">
     
-    <div id="main">
+        <input type="text" id="input" placeholder="search movie name">
+        <button onclick="show()">Search
+            </button>
+    </div>
+    <div id="main" >
 
     </div>
 </body>
 </html>
 <script >
-    async function displaydat(){
-        let res = await fetch("https://fakestoreapi.com/products");
+     const show= async () =>{
+
+    let query=document.querySelector("#input").value;
+     url=`https://fakestoreapi.com/products/category/${query}`;
+
+
+ let res = await fetch(`${url}`);
         let data= await res.json();
-        console.log(data)
+        // console.log(data)
+        let main=document.getElementById("main");
+        main.textContent="";
+        data.forEach(({title,price,description,category,image,rating}) => {
+            
+            
+let card=document.createElement("div");
+card.className="card"
+            let dis =document.createElement("img");
+            dis.className="size"
+            dis.src=image;
+
+            let des=document.createElement("h3");
+            des.innerText=description
+            
+            let mrp=document.createElement("h2");
+            mrp.textContent=`MRP - ${price}`;
+            mrp.style.color="red"
+
+            let cat=document.createElement("p");
+            cat.textContent=`Category - ${category}`;
+
+            let rate=document.createElement("p");
+            rate.textContent = `Rating - ${rating.rate}`;
+            
+card.append(dis,des,mrp,cat,rate)
+            main.append(card)
+            console.log(rating)
+ 
+ 
+
+ } )
+
+     }
+
+
+    async function displaydat(){
+        let url="https://fakestoreapi.com/products";
+        
+        let res = await fetch(`${url}`);
+        let data= await res.json();
+        // console.log(data)
         data.forEach(({title,price,description,category,image,rating}) => {
 let card=document.createElement("div");
 card.className="card"
@@ -69,5 +164,6 @@ card.append(dis,des,mrp,cat,rate)
             console.log(rating)
         });
     }
-displaydat()
+    displaydat();
+ 
 </script>
