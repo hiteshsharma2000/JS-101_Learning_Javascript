@@ -1,6 +1,7 @@
 body{
     display: flex;
     justify-content: center;
+    background-color: #b29696;
 }
 button {
     background-color: #007BFF;
@@ -33,4 +34,39 @@ input {
 input:focus {
     border-color: #007BFF;
     outline: none;
+}
+#forecast{
+    display: flex;
+    margin-top: 100px;
+}
+.forecast-container {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.forecast-days {
+    display: flex;
+    justify-content: space-around;
+    
+    margin-top: 100px;
+}
+
+.day {
+    background-color: #60ceea;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    margin: 20px;
+    margin: 0 10px;
+    border-radius: 7px;
+}
+
+.forecast-icon img {
+    width:100px;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+.forecast-date {
+    margin-bottom: 10px;
 }

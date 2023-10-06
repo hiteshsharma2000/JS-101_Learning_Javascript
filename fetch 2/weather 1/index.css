@@ -49,3 +49,6 @@ input:focus {
 body{
     background-color: black;
 }
+#inp,h1{
+    padding-left: 40%;
+}
