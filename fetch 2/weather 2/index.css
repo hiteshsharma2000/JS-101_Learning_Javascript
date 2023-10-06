@@ -30,7 +30,10 @@ input {
     font-size: 16px;
     transition: border-color 0.3s;
 }
-
+img{
+background-color: #007BFF;
+border-radius: 50px;
+}
 input:focus {
     border-color: #007BFF;
     outline: none;

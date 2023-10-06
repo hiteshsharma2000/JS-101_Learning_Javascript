@@ -15,24 +15,25 @@
         <h1>Enter City Name</h1>
         <input type="text" id="city"> <button onclick="fetchwheather()"> SUBMIT</button>
     </div>
-    <div id="detail">
+    
+    <div id="detail" class="glow-on-hover">
 
         <div id="left">
 
             <img src=""  id="icon">
-            <h3>Temprature - <span id="temp"></span></h3>
-            <h3>Min Temp - <span id="mintemp"></span></h3>
-            <h3>Max Temp - <span id="maxtemp"></span></h3>
-            <h3>pressure - <span id="pressure"></span></h3>
-            <h3>wind speed - <span id="windspeed"></span></h3>
-            <h3>Sun rise - <span id="rise"></span></h3>
-            <h3>Sun set - <span id="set"></span></h3>
-            <h3>cloud - <span id="cloud"></span></h3>
+            <h3> <span id="temp"></span></h3>
+            <h3> <span id="mintemp"></span></h3>
+            <h3> <span id="maxtemp"></span></h3>
+            <h3><span id="pressure"></span></h3>
+            <h3><span id="windspeed"></span></h3>
+            <h3><span id="rise"></span></h3>
+            <h3> <span id="set"></span></h3>
+            <h3><span id="cloud"></span></h3>
         </div>
         <div id="right">
         
             <iframe
-id="Map"
+id="Map" 
   frameborder="0"
   width="600"
   height="450"
@@ -44,7 +45,9 @@ id="Map"
 </iframe>
         </div>
     </div>
+    
 </div>
+
 </body>
 </html>
 <script src="./index.js"></script>
