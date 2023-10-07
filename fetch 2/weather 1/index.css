@@ -40,11 +40,14 @@ input:focus {
     display: grid;
     grid-template-columns: repeat(2,1fr
     );
+
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     padding: 50px 50px 50px 100px;
     background-color:rgb(184, 179, 171);
     border-radius: 7px
     ;
+    
+
 }
 .dis:hover{
     transform: scale(1.1);
@@ -81,6 +84,7 @@ body{
     z-index: 0;
     border-radius: 10px;
 }
+
 
 .glow-on-hover:before {
     content: '';

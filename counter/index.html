@@ -13,6 +13,20 @@
            padding-right:30%;
            
         }
+        #main{
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            padding: 25%;
+            padding-top: 5%;
+        }
+        button{
+            background-color: deeppink;
+            width: 80px;
+            height: 30px;
+            border-radius: 7px;
+        }
+        h1{
+            color: red;
+        }
         
     </style>
 </head>
@@ -28,51 +42,59 @@
 </div>
 </body>
 <script>
-    let intervalId;
-let counter = 0;
-let Running = false;
+    class Counter{
 
-const startStopButton = document.getElementById('startStopButton');
-const incrementButton = document.getElementById('incrementButton');
-const decrementButton = document.getElementById('decrementButton');
-const counterDisplay = document.getElementById('Display');
+        constructor(){
+            this.count=0;
+            this.intervalid;
+        }
+        start(){
+          if(!this.intervalid){
+            this.intervalid=setInterval(()=>{
+                this.count++;
+                this.render();
+                
+            },1000)
+          }
 
-function Counter() {
-    if (Running) {
-        clearInterval(intervalId);
-        startStopButton.innerText = 'Start';
-        incrementButton.disabled = false;
-        decrementButton.disabled = false;
-       
-    } else {
-        intervalId = setInterval(() => {
-            counter++;
-            counterDisplay.textContent = counter;
-        }, 1000);
-        startStopButton.textContent = 'Stop';
-        incrementButton.disabled = true;
-        decrementButton.disabled = true;
-        // Running=true;
+        }
+        stop(){
+            if(this.intervalid){
+                clearInterval(this.intervalid);
+                this.intervalid=null;            }
+        }
+        increament(){
+            clearInterval(this.intervalid);
+            this.count++
+            this.render();
+
+        }
+        decreament(){
+            clearInterval(this.intervalid);
+            this.count--;
+            this.render();
+        }
+        render(){
+            document.getElementById('Display').textContent=this.count;
+        }
     }
-   return Running = !Running;
-}
+let main=new Counter();
 
-startStopButton.addEventListener('click', Counter);
+document.getElementById("startStopButton").addEventListener("click",function(){
+  if(this.textContent==="Start"){
+    main.start();
+     this.textContent="stop";
+  }else{
+    main.stop();
+   this.textContent="Start";
+  }
+})
 
-incrementButton.addEventListener('click', () => {
-    counter++;
-    counterDisplay.textContent = counter;
-     Running = false;
-    startStopButton.textContent = 'Start';
-});
-
-decrementButton.addEventListener('click', () => {
-    counter--;
-    counterDisplay.textContent = counter;
-    Running = false;
-    startStopButton.textContent = 'Start';
-});
-
-
+document.getElementById("incrementButton").addEventListener("click",function(){
+    main.increament();
+})
+document.getElementById("decrementButton").addEventListener('click',function(){
+    main.decreament();
+})
 </script>
 </html>

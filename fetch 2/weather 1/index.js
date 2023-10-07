@@ -40,6 +40,7 @@ try {
     map.className="dis"
 
 } catch (error) {
+    alert("please check city name")
     console.log(error)
 }
 
