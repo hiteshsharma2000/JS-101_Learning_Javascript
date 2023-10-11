@@ -1,0 +1,91 @@
+Q.1 What is React ?
+ans- react is a javascript library for buildinng user interface . it is used to build single page applications & 
+it allow us to create reusable UI components.
+
+Q.2 who made react ?
+ans- react was created by Jordan Walke , an engineer was working for facebook bcoz
+facebook was badly in need of libary like react . As facebook got bigger,its code 
+base also got massive.Thousand of engineers  were working on tons of features and those features were being added.
+ As a result code maintenance become very difficult and the application features slowed things down fast.
+
+ Q.3 what is Bable ?
+ ans- Bable is a free and open-source javascript transcompiler that is mainly used to convert  JSX code into something which browser understands .
+ for using bable set your script type [text/bable].
+
+ Q.4 How does Babel convert html code in React into valid code ?
+ ans- In React , developers write UI components using JSX , it is syntax extension for javascript that allows you to write HTML-like code within your javascript files.
+ Babel can be configured with a plugin called @babel/preset-react. This plugin is responsible for converting JSX syntax into plain JavaScript. When you include this preset
+ in your Babel configuration, it recognizes JSX code and transpiles it into JavaScript code when you run code using bable , it scans for JSX elements and convert them into 
+ React.createElement() function calls and the transformed javascript code , which is no longer contains JSX syntax,can be executed by web browser 
+
+ Q.5 What is ReactDOM used for & Write an example ?
+ ans- ReactDOM is a library in react whhich is used for render React components into the DOM . it's responsible for taking your react components and efficiency updating the actual web page in the browser. 
+ ReactDOM provides the bridge between your React applications and the browser
+JS part
+ ex-import React from 'react';
+import ReactDOM from 'react-dom';
+
+// Define a simple React component
+function MyComponent() {
+  return <h1>Hello World</h1>;
+}
+
+// Render the component into the DOM
+ReactDOM.render(<MyComponent />, document.getElementById('main'));
+
+HTML part-
+<div id="main">
+  <h1>Hello World</h1>
+</div>
+
+Q.6 What are the packages that you need to import for react to work with ?
+ans- To work with React, you'll need to import several packages and dependencies.React is typically used with a build tool like Create React App (CRA) or Webpack,
+ which manage these dependencies for you. Here are the core packages you need to import for a basic React application
+1. react: This is the core React library.
+2.react-dom: This package is used for rendering React components in the browser.
+3.react-scripts (if using Create React App): This package includes scripts and 
+configurations for building and running a React application.
+
+Q.7 How do you add react to a web application ?
+ans- You’ll need to have Node on your local development machine
+step 1. To create a new app 
+-->   npm init react-app my-app
+
+step 2. Navigate to Your Project Directory:
+-->    cd my-react-app
+ 
+step 3. Start the Development Server
+-->    npm start
+
+This will launch your React application and open it in your default web browser. You can access it at http://localhost:3000.
+
+Q.8 What is React.createElement?
+ans- React.createElement is a fundamental function in React that is used to create and return a React element,
+which is a lightweight representation of a DOM element or a user-defined component. This function is typically used when writing JSX is not possible or desired,
+such as when dynamically generating React elements in JavaScript code or when working with React programmatically.
+
+Q.9 What are the three properties that createElement accept?
+ans- Type (or Element Type): This is the first argument and is required. It specifies the type of element or component you want to create. It can be one of the following:
+. A string representing an HTML element type (e.g., 'div', 'span', 'h1').
+. A reference to a user-defined React component (e.g., MyComponent where MyComponent is a React component you've defined).
+. Another React.createElement call to create nested elements.
+
+Props (Optional): This is the second argument and is an optional object that contains the properties (or props) you want to pass to the element or component being created.
+Props are used to pass data and configuration to components
+
+Children (Optional): Any additional arguments provided to React.createElement after the props object are considered the children of the element. 
+Children can be other React elements or text content
+
+Q.10 What is the meaning of render and root?
+ans- Purpose of render() -->
+React renders HTML to the web page by using a function called render().
+The purpose of the function is to display the specified HTML code inside the specified HTML element.
+In the render() method, we can read props and state and return our JSX code to the root component of our app.
+In the render() method, we cannot change the state, and we cannot cause side effects( such as making an HTTP request to the webserver)
+
+ Purpose of root -->
+In the context of web development and React, a root typically refers to the HTML element where your React application is mounted or inserted.
+It's the top-level element that serves as the entry point for your React application.
+
+When you create a React application, you specify a root element in your HTML file where your React components will be rendered. 
+This is usually done using a <div> element with a specific id attribute.
