@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #input{
+            width: 90%;
+            margin-left:5%;
+            height: 50px;
+            border: none;
+            margin-top: 25px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            
+        }
+    
+        #movielist{
+            display: grid;
+margin-left: 10%;
+            grid-template-columns:repeat(3,1fr);
+            gap: 30px;
+            width: 80%;
+        }.block{
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            justify-content: center;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="input" oninput="search()" placeholder="S E A R C H      M O V I E">
+
+    <div id="movielist"></div>
+</body>
+</html>
+<script>
+let timeout=null;
+const search=async()=>{
+    let query=document.querySelector("#input").value;
+    let url=`https://www.omdbapi.com/?i=tt3896198&apikey=ef86af6&s=${query}`;
+try{
+    let res = await fetch(url);
+    let data=await res.json();
+    clearInterval(timeout)
+    timeout=setTimeout(function(){
+        console.log(data.Search)
+        display(data.Search)
+},2000)
+}catch(error){
+    console.error(error)
+
+}
+  
+
+
+}
+
+function display(movie){
+    const movielist=document.getElementById("movielist");
+movielist.innerText="";
+if(movie){
+  movie.forEach(function (ele) {
+
+    let block=document.createElement("div");
+    block.className="block"
+    block.innerHTML=`
+  <div>
+    <h3>${ele.Title}</h3>
+    <img src="${ele.Poster}" >
+    </div>
+    `
+    movielist.append(block)
+  });
+  
+}else{
+    movielist.innerHTML=`<h3>No movies found</h3>`
+   
+}
+}
+
+</script>
