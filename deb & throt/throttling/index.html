@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>throttling</title>
+    <style>
+        #input{
+            width: 90%;
+            margin-left:5%;
+            height: 50px;
+            border: none;
+            margin-top: 25px;
+            box-shadow: rgba(251, 243, 6, 0.941) 0px 5px 15px;
+            
+        }
+        body{
+            background-color:rgb(7, 7, 7)
+            
+        }
+    
+        #recipelist{
+            color: white;
+            display: grid;
+     margin-left: 10%;
+     margin-top: 100px;
+            grid-template-columns:repeat(3,1fr);
+            gap: 50px;
+            width: 80%;
+        }.block{
+            box-shadow: rgba(223, 231, 5, 0.986) 0px 5px 15px;
+            justify-content: center;
+            text-align: center;
+            background: transparent;
+            color: antiquewhite;
+            border-radius: 7px;
+            
+        }
+        img{
+            width: 300px;
+        }
+        #head{
+            text-align: center;
+            color: rgb(15, 131, 194);
+            text-shadow: rgba(249, 232, 0, 0.97) 0px 5px 15px;;
+        }
+    </style>
+</head>
+<body>
+    <div id="head"><h3>MEAL BAZAR</h3></div>
+    <input type="text" id="input" oninput="search()" placeholder="S E A R C H      M E A L">
+
+    <div id="recipelist"></div>
+</body>
+</html>
+<script>
+let timeout=null;
+function search(){
+    let query=document.querySelector("#input").value;
+    let url=`https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`;
+
+    fetch(url)
+    .then(res => res.json())
+    .then(data => {
+        setTimeout(function(){
+            console.log(data)
+            display(data.meals)
+        },100)
+    })
+   .catch(error => {
+alert("there are some error")
+   })
+
+
+}
+
+function display(recipe){
+    const recipelist=document.getElementById("recipelist");
+    recipelist.innerText="";
+if(recipe){
+  recipe.forEach(function (ele) {
+
+    let block=document.createElement("div");
+    block.className="block"
+    block.innerHTML=`
+  <div>
+    <h3>${ele.strMeal}</h3>
+    <img src="${ele.strMealThumb}" >
+    <h3>Category - ${ele.strCategory}</h3>
+    </div>
+    `
+    recipelist.append(block)
+  });
+  
+}else{
+    recipelist.innerHTML=`<h3>No Meal found</h3>`
+   
+}
+}
+
+</script>
