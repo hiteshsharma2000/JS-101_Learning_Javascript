@@ -1,0 +1,23 @@
+body{
+  padding: 0%;
+}
+#select option{
+  color: black;
+  border: 7px;
+  
+}
+#select{
+  color: white;
+ 
+}
+#nav{
+  top: 0%;
+  margin: 0%;
+  padding:15px;
+  
+}
+#root{
+  padding: 0%;
+  margin: 0%;
+}
+

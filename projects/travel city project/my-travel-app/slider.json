@@ -1,0 +1,25 @@
+[
+    { 
+         "id":"1",
+         "title":"Danbury",
+        "location":"United States of America",
+        "img": "https://a.travel-assets.com/findyours-php/viewfinder/images/res70/88000/88565-Danbury-And-Vicinity.jpg?impolicy=fcrop&w=357&h=201&p=1&q=medium"
+    },
+    {    "id":"2",
+        "title":"Noida",
+        "location":"india",
+        "img": "https://mediaim.expedia.com/destination/2/7bdf878d9ed294eb7b1b8a879b2fe36d.jpg?impolicy=fcrop&w=357&h=201&p=1&q=medium"
+    },
+    {   "id":"3",
+        "title":"Aurangabad",
+        "location":"United States of America",
+        "img": "https://mediaim.expedia.com/destination/1/144ea47bbd296f34103f4eb1aae55ec9.jpg?impolicy=fcrop&w=357&h=201&p=1&q=medium"
+    },
+    {    "id":"4",
+        "title":"Bhopal",
+        "location":"india",
+        "img": "https://mediaim.expedia.com/destination/2/0e88f234783506e26a4d65fa07f76279.jpg?impolicy=fcrop&w=357&h=201&p=1&q=medium"
+    }
+    
+
+]

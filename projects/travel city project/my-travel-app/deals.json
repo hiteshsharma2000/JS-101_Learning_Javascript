@@ -1,0 +1,13 @@
+[
+
+    { "id":"1",
+    "img":"https://forever.travel-assets.com/flex/flexmanager/images/2021/11/08/TVLY_Storefront_AllInclusive_imgB_1199x399_20211104.jpg?impolicy=fcrop&w=1400&h=600&q=mediumHigh",
+    "title":"All-inclusive resorts",
+    "description":"Think of nothing beyond having a great time with your family"
+    },
+    {"id":"2",
+        "img":"https://forever.travel-assets.com/flex/flexmanager/images/2021/11/08/TVLY_Storefront_LastMinute_imgB_1199x399_20211104.jpg?impolicy=fcrop&w=1400&h=600&q=mediumHigh",
+        "title":"Last minute getaways",
+        "description":"celebrate the moment with an unexpected getaway"
+    }
+]
